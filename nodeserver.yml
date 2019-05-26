@@ -1,5 +1,5 @@
 ---
-- hosts: '{{ target | default("all") }}'
+- hosts: appserver
   become: yes
   roles:
     - nodejs

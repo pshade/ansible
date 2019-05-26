@@ -1,0 +1,24 @@
+---
+- hosts: localhost
+  become: yes
+  connection: local
+
+  vars: 
+    aws_region: "us-east-2"
+    
+  tasks:
+
+  - name: install codedeploy agent dependencies
+    yum:
+      name: ruby
+      state: present
+
+  - name: Download CodeDeploy Agent
+    get_url:
+      url: "https://aws-codedeploy-{{ aws_region }}.s3.amazonaws.com/latest/install"
+      dest: /tmp/codedeploy-install
+      mode: 0755
+   
+  - name: CodeDeploy Install
+    become: yes
+    command: /tmp/codedeploy-install auto

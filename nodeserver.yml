@@ -1,5 +1,6 @@
 ---
 - hosts: appserver
+  connection: local
   become: yes
   roles:
     - nodejs

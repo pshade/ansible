@@ -3,3 +3,6 @@
   become: yes
   roles:
     - nodejs
+
+# import playbook to install dependencies and code deploy agent
+- import_playbook: install_codedeployagent.yml
